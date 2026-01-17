@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb7kh5typnfwj"]
+
+[ext_resource type="Script" uid="uid://ihn87u54dopn" path="res://scripts/actions/StaticInfo.cs" id="1_v50ge"]
+
+[node name="StaticInfo" type="Node"]
+script = ExtResource("1_v50ge")

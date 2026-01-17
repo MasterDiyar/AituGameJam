@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://i13u7f0f6t1x"]
+
+[ext_resource type="PackedScene" uid="uid://1vcf361752sv" path="res://scenes/items/item.tscn" id="1_k4oma"]
+[ext_resource type="Texture2D" uid="uid://bk25s0li68a3l" path="res://assets/items/hoe.png" id="2_l6qhb"]
+[ext_resource type="PackedScene" uid="uid://cqgpcpp4wqm1m" path="res://scenes/actions/moss_actioner.tscn" id="3_l6qhb"]
+
+[node name="hoe" instance=ExtResource("1_k4oma")]
+texture = ExtResource("2_l6qhb")
+offset = Vector2(0, -8)
+Count = 1
+Type = "hoe"
+
+[node name="mossActioner" parent="." index="0" node_paths=PackedStringArray("timer") instance=ExtResource("3_l6qhb")]
+timer = NodePath("../recharge")
+
+[node name="recharge" type="Timer" parent="." index="1"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=11 format=3 uid="uid://vpqkia6q6oue"]
+
+[ext_resource type="Script" uid="uid://f2x545pj8dby" path="res://scripts/plants/Plant.cs" id="1_yhkry"]
+[ext_resource type="Texture2D" uid="uid://bi2w4nusm0sjo" path="res://assets/plants/wheat1.png" id="2_475s8"]
+[ext_resource type="Texture2D" uid="uid://cl5bi63kmxpa1" path="res://assets/plants/wheat2.png" id="3_f802b"]
+[ext_resource type="Texture2D" uid="uid://dcsd2uq7i20ki" path="res://assets/plants/wheat3.png" id="4_2ssdi"]
+[ext_resource type="Texture2D" uid="uid://untja0d0gmb4" path="res://assets/plants/wheat4.png" id="5_ccrg6"]
+[ext_resource type="Texture2D" uid="uid://d1wnpqeta5b3q" path="res://assets/plants/wheat5.png" id="6_fi4tk"]
+[ext_resource type="PackedScene" uid="uid://43r1lr4erksa" path="res://scenes/items/wheat_seed.tscn" id="7_f802b"]
+[ext_resource type="Script" uid="uid://bxhdt16be57qo" path="res://scripts/resources/ItemEntry.cs" id="8_2ssdi"]
+
+[sub_resource type="Resource" id="Resource_ccrg6"]
+script = ExtResource("8_2ssdi")
+Scene = ExtResource("7_f802b")
+Coords = Vector2i(3, 5)
+metadata/_custom_type_script = "uid://bxhdt16be57qo"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6oho8"]
+
+[node name="Wheat" type="Area2D" node_paths=PackedStringArray("GrowthTimer", "GrowSprite")]
+script = ExtResource("1_yhkry")
+Hp = 121.0
+GrowthTimer = NodePath("Timer")
+GrowTexture = Array[Texture2D]([ExtResource("2_475s8"), ExtResource("3_f802b"), ExtResource("4_2ssdi"), ExtResource("5_ccrg6"), ExtResource("6_fi4tk")])
+GrowSprite = NodePath("Sprite2D")
+InventoryItems = Array[Object]([SubResource("Resource_ccrg6")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6oho8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

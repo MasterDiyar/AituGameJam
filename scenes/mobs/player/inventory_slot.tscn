@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn20x5x65g0gl"]
+
+[ext_resource type="Script" uid="uid://dxrnkk613ogps" path="res://scripts/playerThings/InventorySlot.cs" id="1_o3m6m"]
+
+[node name="InventorySlot" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_o3m6m")

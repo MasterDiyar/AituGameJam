@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8i8e6a5aumby"]
+
+[ext_resource type="Script" uid="uid://c0eh5pprdyx0" path="res://scripts/playerThings/PlayerUi.cs" id="1_som0v"]
+[ext_resource type="PackedScene" uid="uid://bn20x5x65g0gl" path="res://scenes/mobs/player/inventory_slot.tscn" id="2_agedd"]
+
+[node name="playerUI" type="CanvasLayer" node_paths=PackedStringArray("uiContainer", "numsContainer", "uiLine")]
+script = ExtResource("1_som0v")
+uiContainer = NodePath("Control/items")
+numsContainer = NodePath("Control/nums")
+uiLine = NodePath("Control/Control/Line2D")
+
+[node name="Control" type="Control" parent="."]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="items" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -96.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InventorySlot" parent="Control/items" instance=ExtResource("2_agedd")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventorySlot2" parent="Control/items" instance=ExtResource("2_agedd")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventorySlot3" parent="Control/items" instance=ExtResource("2_agedd")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventorySlot4" parent="Control/items" instance=ExtResource("2_agedd")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventorySlot5" parent="Control/items" instance=ExtResource("2_agedd")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -96.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Line2D" type="Line2D" parent="Control/Control"]
+points = PackedVector2Array(0, 0, 96, 0, 96, 96, 0, 96)
+closed = true
+width = 2.0
+
+[node name="nums" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -96.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/nums"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "1"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="Control/nums"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "1"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="Control/nums"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "1"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="Control/nums"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "1"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="Control/nums"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "1"
+horizontal_alignment = 2

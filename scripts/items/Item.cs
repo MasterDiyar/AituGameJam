@@ -1,26 +1,41 @@
 using System;
+using AITUgameJam.scripts.mobs;
+using AITUgameJam.scripts.playerThings;
+using Godot;
 
 namespace AITUgameJam.scripts.items;
-using Godot;
+
 public partial class Item : Sprite2D
 {
     [Export] public int Count = 0;
+    [Export] public string Type = "";
+    [Export] public int itemID = 0;
 
     
-    Action MainHandAction, SecondHandAction;
+    public Action MainHandAction, SecondHandAction;
     
     public override void _Ready()
     {
-        base._Ready();
+        if (GetParent() is Unit)
+            OnHand();
     }
 
-    public override void _Process(double delta)
+    public void OnHand()
     {
-        
+        GetParent<Unit>().leftClick += mhInvoker;
     }
 
-    public override void _ExitTree()
+    protected virtual void mhInvoker()
     {
-        
+        MyInventory.EmitCurrent(Count);
+        MainHandAction?.Invoke();
+    }
+    
+    public int InventoryIndex;
+    public Inventory MyInventory;
+
+    protected void OnItemFinished()
+    {
+        MyInventory?.RemoveItem(InventoryIndex);
     }
 }

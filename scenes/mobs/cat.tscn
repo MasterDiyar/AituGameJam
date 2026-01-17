@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk5p2ghpoe1o1"]
+[gd_scene load_steps=7 format=3 uid="uid://bk5p2ghpoe1o1"]
 
 [ext_resource type="Script" uid="uid://bvobquydbulwu" path="res://scripts/mobs/Cat.cs" id="1_3jyd3"]
+[ext_resource type="Texture2D" uid="uid://c0nw4n3kfsxsa" path="res://assets/mobs/cat_test.png" id="2_35cim"]
+[ext_resource type="PackedScene" uid="uid://bf0ytnobaw5ce" path="res://scenes/other/move.tscn" id="3_qqgpb"]
+[ext_resource type="PackedScene" uid="uid://c8i8e6a5aumby" path="res://scenes/mobs/player/PlayerUI.tscn" id="4_qqgpb"]
+[ext_resource type="PackedScene" uid="uid://chy8i4s334kf3" path="res://scenes/mobs/player/inventory.tscn" id="5_5ek8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35cim"]
 
 [node name="cat" type="CharacterBody2D"]
 script = ExtResource("1_3jyd3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_35cim")
+
+[node name="CatTest" type="Sprite2D" parent="."]
+position = Vector2(1.7881393e-07, 0)
+scale = Vector2(0.062499996, 0.060037527)
+texture = ExtResource("2_35cim")
+
+[node name="Camera2D" type="Camera2D" parent="CatTest"]
+zoom = Vector2(2, 2)
+
+[node name="Move" parent="." instance=ExtResource("3_qqgpb")]
+
+[node name="inventory" parent="." instance=ExtResource("5_5ek8o")]
+
+[node name="playerUI" parent="." node_paths=PackedStringArray("playerInventory") instance=ExtResource("4_qqgpb")]
+playerInventory = NodePath("../inventory")
