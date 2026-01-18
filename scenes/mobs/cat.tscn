@@ -12,7 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://ch0xew5ky26i5" path="res://assets/mobs/cat/cat6.png" id="10_i3uir"]
 [ext_resource type="Texture2D" uid="uid://c6u8egugsy0lh" path="res://assets/mobs/cat/cat7.png" id="11_xowfy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_35cim"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2knn1"]
+size = Vector2(36, 61)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqjn1"]
 animations = [{
@@ -51,11 +52,13 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="cat" type="CharacterBody2D"]
+[node name="cat" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_3jyd3")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_35cim")
+position = Vector2(-17, -14.5)
+shape = SubResource("RectangleShape2D_2knn1")
 
 [node name="Move" parent="." instance=ExtResource("3_qqgpb")]
 
@@ -77,4 +80,5 @@ limit_bottom = 1312
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_fqjn1")
 animation = &"idle"
-frame_progress = 0.50568235
+frame_progress = 0.6172287
+offset = Vector2(-16, -16)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d371c3ep4ar22"]
+
+[ext_resource type="PackedScene" uid="uid://dkpgx8meg5eqt" path="res://scenes/mobs/ant.tscn" id="1_80ato"]
+[ext_resource type="Texture2D" uid="uid://cjlvh1t1aahj0" path="res://assets/mobs/ant1.png" id="2_2mkdn"]
+[ext_resource type="Texture2D" uid="uid://cyr7llnauibtx" path="res://assets/mobs/ant2.png" id="3_63w56"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1p64t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2mkdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_63w56")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="worker" node_paths=PackedStringArray("AnimatedSprite") instance=ExtResource("1_80ato")]
+AnimatedSprite = NodePath("AnimatedSprite2D")
+MaxHp = 100.0
+MaxSpeed = 100.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-0.5, 9.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_1p64t")

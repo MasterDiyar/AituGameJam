@@ -27,7 +27,19 @@ public partial class Unit : CharacterBody2D, IGetHurt
     public virtual void TakeDamage(float damage)
     {
         Hp -= damage;
+        Tween damageTween = GetTree().CreateTween();
+        Modulate = new Color(1, 0, 0); 
+    
+        damageTween.TweenProperty(this, "modulate", new Color(1, 1, 1), 0.5f)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
+
         if (Hp <= 0) 
-            QueueFree();
+            OnDeath();
+    }
+
+    public virtual void OnDeath()
+    {
+        QueueFree();
     }
 }

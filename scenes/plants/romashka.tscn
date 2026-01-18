@@ -1,10 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://e313d3ckxpvx"]
+[gd_scene load_steps=10 format=3 uid="uid://e313d3ckxpvx"]
 
 [ext_resource type="Script" uid="uid://f2x545pj8dby" path="res://scripts/plants/Plant.cs" id="1_1uffn"]
 [ext_resource type="Texture2D" uid="uid://bmdr6cx7r8smb" path="res://assets/plants/romashka1.png" id="2_55q5p"]
 [ext_resource type="Texture2D" uid="uid://bha2oinwldqfw" path="res://assets/plants/romashka2.png" id="3_uskyr"]
 [ext_resource type="Texture2D" uid="uid://b7bpldkemtehq" path="res://assets/plants/romashka3.png" id="4_hbtqh"]
 [ext_resource type="Texture2D" uid="uid://cl5ixv860nqvs" path="res://assets/plants/romashka4.png" id="5_pqhcj"]
+[ext_resource type="PackedScene" uid="uid://ig4bl13pcne5" path="res://scenes/items/romashkaseed.tscn" id="6_uskyr"]
+[ext_resource type="Script" uid="uid://bxhdt16be57qo" path="res://scripts/resources/ItemEntry.cs" id="7_hbtqh"]
+
+[sub_resource type="Resource" id="Resource_pqhcj"]
+script = ExtResource("7_hbtqh")
+Scene = ExtResource("6_uskyr")
+Coords = Vector2i(1, 3)
+metadata/_custom_type_script = "uid://bxhdt16be57qo"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bk1ii"]
 size = Vector2(25, 41)
@@ -16,6 +24,7 @@ Hp = 80.0
 GrowthTimer = NodePath("Timer")
 GrowTexture = Array[Texture2D]([ExtResource("2_55q5p"), ExtResource("3_uskyr"), ExtResource("4_hbtqh"), ExtResource("5_pqhcj")])
 GrowSprite = NodePath("Sprite2D")
+InventoryItems = Array[Object]([SubResource("Resource_pqhcj")])
 DieChance = 30.0
 
 [node name="Timer" type="Timer" parent="."]

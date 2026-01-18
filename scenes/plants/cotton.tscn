@@ -1,13 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr6r0tjja1jjy"]
+[gd_scene load_steps=12 format=3 uid="uid://cr6r0tjja1jjy"]
 
 [ext_resource type="Script" uid="uid://bq080sqjn0fsm" path="res://scripts/plants/Cotton.cs" id="1_tvfkc"]
+[ext_resource type="Texture2D" uid="uid://cxlu827r7lqut" path="res://assets/plants/cotton1.png" id="2_kv6ow"]
+[ext_resource type="Texture2D" uid="uid://co7ao2ni84r01" path="res://assets/plants/cotton2.png" id="3_5rcdf"]
+[ext_resource type="Texture2D" uid="uid://c8vr2ytl0865r" path="res://assets/plants/cotton3.png" id="4_w6f7c"]
+[ext_resource type="Texture2D" uid="uid://dmmxcpre4r803" path="res://assets/plants/cotton4.png" id="5_fms2d"]
+[ext_resource type="Texture2D" uid="uid://c482ltb7tmtku" path="res://assets/plants/cotton5.png" id="6_yrr6s"]
+[ext_resource type="Texture2D" uid="uid://2o5y1un2hf" path="res://assets/plants/cotton6.png" id="7_5uojk"]
+[ext_resource type="PackedScene" uid="uid://0uo7vav0gdia" path="res://scenes/plants/cotton_seed.tscn" id="8_5rcdf"]
+[ext_resource type="Script" uid="uid://bxhdt16be57qo" path="res://scripts/resources/ItemEntry.cs" id="9_w6f7c"]
+
+[sub_resource type="Resource" id="Resource_5rcdf"]
+script = ExtResource("9_w6f7c")
+Scene = ExtResource("8_5rcdf")
+Coords = Vector2i(0, 5)
+metadata/_custom_type_script = "uid://bxhdt16be57qo"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyb4l"]
 size = Vector2(61, 68)
 
-[node name="cotton" type="Area2D"]
+[node name="cotton" type="Area2D" node_paths=PackedStringArray("GrowthTimer", "GrowSprite")]
 texture_filter = 3
 script = ExtResource("1_tvfkc")
+Hp = 600.0
+GrowthTimer = NodePath("Timer")
+GrowTexture = Array[Texture2D]([ExtResource("2_kv6ow"), ExtResource("3_5rcdf"), ExtResource("4_w6f7c"), ExtResource("5_fms2d"), ExtResource("6_yrr6s"), ExtResource("7_5uojk")])
+GrowSprite = NodePath("Sprite2D")
+InventoryItems = Array[Object]([SubResource("Resource_5rcdf")])
+DieChance = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 13)
@@ -16,3 +36,4 @@ shape = SubResource("RectangleShape2D_kyb4l")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 12.0

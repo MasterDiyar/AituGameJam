@@ -5,7 +5,10 @@ using AITUgameJam.scripts.mobs;
 
 public partial class WaveEmitter : Node2D
 {
-	[Export] private PackedScene[] mobs = [GD.Load<PackedScene>("res://scenes/mobs/ant.tscn")];
+	[Export] private PackedScene[] mobs = [GD.Load<PackedScene>("res://scenes/mobs/worker.tscn"),
+		GD.Load<PackedScene>("res://scenes/mobs/infant.tscn"),
+		GD.Load<PackedScene>("res://scenes/mobs/koroleva.tscn"),
+	];
 	[Export] private Timer timer;
 	private Node _spawnTarget;
 	private int Wave = 0;

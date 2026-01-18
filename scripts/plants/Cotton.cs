@@ -1,15 +1,20 @@
 using Godot;
 using System;
+using AITUgameJam.scripts.plants;
 
-public partial class Cotton : Area2D
+public partial class Cotton : Plant
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	protected override void GiveItem()
 	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		foreach (var scene in InventoryItems)
+		{
+			var count = GD.RandRange(scene.Coords.X, scene.Coords.Y*5);
+			if (count <= scene.Coords.Y*5-3) return;
+			count = scene.Coords.Y;
+			var abort = abortion.Instantiate<ThrowedItem>();
+			abort.Position = GlobalPosition + Vector2.FromAngle(GD.Randf() * 6.28f)*10;
+			GetTree().GetFirstNodeInGroup("map").AddChild(abort);
+			abort.Setup(scene.Scene, count);
+		}
 	}
 }

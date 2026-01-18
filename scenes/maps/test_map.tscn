@@ -1,13 +1,17 @@
-[gd_scene load_steps=11 format=4 uid="uid://cq1vf66gp04v2"]
+[gd_scene load_steps=15 format=4 uid="uid://cq1vf66gp04v2"]
 
 [ext_resource type="Texture2D" uid="uid://y6o6ysvfsgjy" path="res://assets/tilemaps/earth tilemap.png" id="1_38prr"]
 [ext_resource type="TileSet" uid="uid://df1etmqs14fsw" path="res://scenes/maps/tiles/MossTileMap.tres" id="1_ybdod"]
 [ext_resource type="Script" uid="uid://boilt22g26nn7" path="res://scripts/mapEditor/MossDrawer.cs" id="2_2s55i"]
-[ext_resource type="PackedScene" uid="uid://dkpgx8meg5eqt" path="res://scenes/mobs/ant.tscn" id="2_pjele"]
 [ext_resource type="PackedScene" uid="uid://vpqkia6q6oue" path="res://scenes/plants/wheat.tscn" id="4_a3b3n"]
 [ext_resource type="PackedScene" uid="uid://bk5p2ghpoe1o1" path="res://scenes/mobs/cat.tscn" id="5_a3b3n"]
 [ext_resource type="PackedScene" uid="uid://123kl312y2og" path="res://scenes/other/hpbar.tscn" id="6_qoqmi"]
+[ext_resource type="PackedScene" uid="uid://bb14de8v67w27" path="res://scenes/plants/shrooms.tscn" id="8_auue8"]
 [ext_resource type="PackedScene" uid="uid://gty7h3kwmjef" path="res://scenes/other/wave_emitter.tscn" id="8_ibx7c"]
+[ext_resource type="PackedScene" uid="uid://e313d3ckxpvx" path="res://scenes/plants/romashka.tscn" id="9_yti6m"]
+[ext_resource type="PackedScene" uid="uid://bhqv8xajmimv3" path="res://scenes/plants/cactus.tscn" id="10_q2e4k"]
+[ext_resource type="PackedScene" uid="uid://cr6r0tjja1jjy" path="res://scenes/plants/cotton.tscn" id="11_o5aat"]
+[ext_resource type="PackedScene" uid="uid://dxx6g14sc64si" path="res://scenes/plants/rise.tscn" id="12_qnp3f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qoqmi"]
 texture = ExtResource("1_38prr")
@@ -55,5 +59,16 @@ u = NodePath("..")
 
 [node name="WaveEmitter" parent="." instance=ExtResource("8_ibx7c")]
 
-[node name="ant" parent="." instance=ExtResource("2_pjele")]
-position = Vector2(331.03235, 194.56262)
+[node name="Area2D" parent="." instance=ExtResource("8_auue8")]
+position = Vector2(512.84546, 217.35446)
+
+[node name="romashka" parent="." instance=ExtResource("9_yti6m")]
+position = Vector2(301.9364, 238.26355)
+
+[node name="cactus" parent="." instance=ExtResource("10_q2e4k")]
+position = Vector2(200.11823, 274.62717)
+
+[node name="cotton" parent="." instance=ExtResource("11_o5aat")]
+
+[node name="rise" parent="." instance=ExtResource("12_qnp3f")]
+position = Vector2(127.116455, 282.54095)

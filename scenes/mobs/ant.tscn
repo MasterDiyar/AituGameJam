@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkpgx8meg5eqt"]
+[gd_scene load_steps=3 format=3 uid="uid://dkpgx8meg5eqt"]
 
 [ext_resource type="Script" uid="uid://daxjuie22wmqg" path="res://scripts/mobs/AntUnit.cs" id="1_5ammd"]
-[ext_resource type="Texture2D" uid="uid://l40pmqs3ugw4" path="res://assets/mobs/antvenom.png" id="2_0ysw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_643lb"]
 size = Vector2(50, 23)
 
 [node name="ant" type="CharacterBody2D" node_paths=PackedStringArray("checkTimer")]
+texture_filter = 3
 script = ExtResource("1_5ammd")
 AttackRange = 16.0
 checkTimer = NodePath("Timer")
@@ -14,9 +14,5 @@ checkTimer = NodePath("Timer")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 6.5)
 shape = SubResource("RectangleShape2D_643lb")
-
-[node name="Antvenom" type="Sprite2D" parent="."]
-texture_filter = 3
-texture = ExtResource("2_0ysw4")
 
 [node name="Timer" type="Timer" parent="."]

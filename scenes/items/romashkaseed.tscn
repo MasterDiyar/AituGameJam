@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ig4bl13pcne5"]
+
+[ext_resource type="Script" uid="uid://wk2ell6bhpjq" path="res://scripts/items/Item.cs" id="1_nm8g2"]
+[ext_resource type="Texture2D" uid="uid://c6b1rn0vi5hbl" path="res://assets/plants/romsahkagrains.png" id="1_uo6gs"]
+[ext_resource type="PackedScene" uid="uid://baf52hmj5fu64" path="res://scenes/actions/action_node.tscn" id="2_uo6gs"]
+
+[node name="romashkaseed" type="Sprite2D"]
+texture_filter = 3
+texture = ExtResource("1_uo6gs")
+script = ExtResource("1_nm8g2")
+Count = 1
+Type = "seed"
+itemID = 3
+
+[node name="actionNode" parent="." instance=ExtResource("2_uo6gs")]
+id = 3

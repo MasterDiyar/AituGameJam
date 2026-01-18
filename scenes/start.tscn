@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd3lpw0vdtjpo"]
+
+[ext_resource type="Script" uid="uid://c6qdbwbud2tql" path="res://scripts/actions/Start.cs" id="1_u80x2"]
+[ext_resource type="Texture2D" uid="uid://dovlvjbyh38er" path="res://assets/mobs/cat/startbutton.png" id="2_bodal"]
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u80x2")
+
+[node name="Startbutton" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(157.5, 173.5)
+scale = Vector2(2.1953125, 2.1953125)
+texture = ExtResource("2_bodal")
+
+[node name="Button" type="Button" parent="Startbutton"]
+offset_left = -54.889683
+offset_top = -31.658363
+offset_right = 54.889675
+offset_bottom = 12.982208
+text = "START"
+flat = true

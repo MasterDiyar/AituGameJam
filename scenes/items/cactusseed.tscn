@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1b1s4bwwk4nl"]
+
+[ext_resource type="Script" uid="uid://wk2ell6bhpjq" path="res://scripts/items/Item.cs" id="1_b70h8"]
+[ext_resource type="Texture2D" uid="uid://dho36klirvwno" path="res://assets/plants/cactusgrains.png" id="1_cm7c4"]
+[ext_resource type="PackedScene" uid="uid://baf52hmj5fu64" path="res://scenes/actions/action_node.tscn" id="2_cm7c4"]
+
+[node name="cactusseed" type="Sprite2D"]
+texture_filter = 3
+texture = ExtResource("1_cm7c4")
+script = ExtResource("1_b70h8")
+Count = 1
+Type = "seed"
+itemID = 1
+
+[node name="actionNode" parent="." instance=ExtResource("2_cm7c4")]
+id = 1

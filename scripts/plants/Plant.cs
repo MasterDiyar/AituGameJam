@@ -14,9 +14,9 @@ public partial class Plant : Area2D, IGetHurt
     [Export] public Sprite2D GrowSprite;
     [Export] public Godot.Collections.Array<ItemEntry> InventoryItems;
     [Export] public float DieChance = 90;
-    protected int GrowIndex = 0;
+    public int GrowIndex = 0;
     private float Moisture = 0;
-    private PackedScene abortion;
+    protected PackedScene abortion;
     
     public override void _Ready()
     {
@@ -53,10 +53,12 @@ public partial class Plant : Area2D, IGetHurt
     {
         foreach (var scene in InventoryItems)
         {
+            var count = GD.RandRange(scene.Coords.X, scene.Coords.Y);
+            if (count <= 0) return;
             var abort = abortion.Instantiate<ThrowedItem>();
             abort.Position = GlobalPosition + Vector2.FromAngle(GD.Randf() * 6.28f)*10;
             GetTree().GetFirstNodeInGroup("map").AddChild(abort);
-            abort.Setup(scene.Scene, GD.RandRange(scene.Coords.X, scene.Coords.Y));
+            abort.Setup(scene.Scene, count);
         }
     }
     

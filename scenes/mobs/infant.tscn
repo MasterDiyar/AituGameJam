@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6csehqclghsf"]
+
+[ext_resource type="PackedScene" uid="uid://dkpgx8meg5eqt" path="res://scenes/mobs/ant.tscn" id="1_3c6fi"]
+[ext_resource type="Texture2D" uid="uid://ctcaas65rtjs7" path="res://assets/mobs/ant-soldier1.png" id="2_es116"]
+[ext_resource type="Texture2D" uid="uid://c6dmy24t8rif6" path="res://assets/mobs/ant-soldier2.png" id="3_qjp8y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5r73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_es116")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qjp8y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="infant" node_paths=PackedStringArray("AnimatedSprite") instance=ExtResource("1_3c6fi")]
+AttackInterval = 1.5
+AttackRange = 20.0
+AnimatedSprite = NodePath("AnimatedSprite2D")
+MaxSpeed = 250.0
+Damage = 15.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+texture_filter = 3
+position = Vector2(-1, -2)
+sprite_frames = SubResource("SpriteFrames_u5r73")

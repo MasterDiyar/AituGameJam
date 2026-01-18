@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://y1t6ksjtwsef"]
+
+[ext_resource type="Texture2D" uid="uid://bmy4wwv4l2mfo" path="res://assets/plants/risegrain.png" id="1_0ammx"]
+[ext_resource type="Script" uid="uid://wk2ell6bhpjq" path="res://scripts/items/Item.cs" id="2_7igm5"]
+[ext_resource type="PackedScene" uid="uid://baf52hmj5fu64" path="res://scenes/actions/action_node.tscn" id="3_3x8kv"]
+
+[node name="riseseed" type="Sprite2D"]
+texture_filter = 3
+texture = ExtResource("1_0ammx")
+script = ExtResource("2_7igm5")
+Count = 1
+Type = "seed"
+itemID = 2
+
+[node name="actionNode" parent="." instance=ExtResource("3_3x8kv")]
+id = 2

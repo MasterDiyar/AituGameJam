@@ -17,6 +17,7 @@ public partial class AntUnit : Unit
     private float _attackTimer = 0f;
 
     private Vector2 _velocity = Vector2.Zero;
+    [Export] public AnimatedSprite2D AnimatedSprite;
 
     
     Vector2 GoTo = Vector2.Zero;
@@ -29,6 +30,7 @@ public partial class AntUnit : Unit
         base._Ready();
         Search();
         checkTimer.Timeout += Search;
+        AnimatedSprite.Play();
     }
 
     void Search()
@@ -103,13 +105,13 @@ public partial class AntUnit : Unit
             _attackTimer = 0f;
             return;
         }
-        GD.Print("pul srenk");
         _attackTimer += delta;
         if (_attackTimer >= AttackInterval)
         {
-            GD.Print("attacking");
             _attackTimer -= AttackInterval;
             _currentTarget.TakeDamage(Damage);
+            if (_currentTarget is Cactus)
+                TakeDamage(10 * _currentTarget.GrowIndex);
         }
     }
 

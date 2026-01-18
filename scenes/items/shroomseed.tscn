@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck5etp7yn7tn"]
+
+[ext_resource type="Texture2D" uid="uid://briyybcrw1l10" path="res://assets/plants/mushroomgrain.png" id="1_ocihb"]
+[ext_resource type="PackedScene" uid="uid://baf52hmj5fu64" path="res://scenes/actions/action_node.tscn" id="1_rg5we"]
+[ext_resource type="Script" uid="uid://wk2ell6bhpjq" path="res://scripts/items/Item.cs" id="2_g502k"]
+
+[node name="Sprite2D" type="Sprite2D"]
+texture_filter = 3
+texture = ExtResource("1_ocihb")
+script = ExtResource("2_g502k")
+Count = 1
+Type = "seed"
+itemID = 4
+
+[node name="actionNode" parent="." instance=ExtResource("1_rg5we")]
+id = 4
