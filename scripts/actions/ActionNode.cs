@@ -1,4 +1,5 @@
 using AITUgameJam.scripts.items;
+using AITUgameJam.scripts.mapEditor;
 using AITUgameJam.scripts.plants;
 using AITUgameJam.scripts.playerThings;
 using Godot;
@@ -23,7 +24,11 @@ public partial class ActionNode : Node2D
         Item.Count--;
         var plant = someScene.Instantiate<Plant>();
         plant.Position = new Vector2(Mathf.Floor(GlobalPosition.X / 32)*32+16, Mathf.Floor(GlobalPosition.Y / 32)*32+16);
-        GetTree().GetFirstNodeInGroup("map").AddChild(plant);
+        var map = GetTree().GetFirstNodeInGroup("map");
+        
+        if (!map.GetNode<MossDrawer>("moss").HasMoss(plant.Position)) return;
+        
+        map.AddChild(plant);
         
         if (Item.Count <= 0)
         {

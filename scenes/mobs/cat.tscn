@@ -1,12 +1,55 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk5p2ghpoe1o1"]
+[gd_scene load_steps=14 format=3 uid="uid://bk5p2ghpoe1o1"]
 
 [ext_resource type="Script" uid="uid://bvobquydbulwu" path="res://scripts/mobs/Cat.cs" id="1_3jyd3"]
-[ext_resource type="Texture2D" uid="uid://c0nw4n3kfsxsa" path="res://assets/mobs/cat_test.png" id="2_35cim"]
 [ext_resource type="PackedScene" uid="uid://bf0ytnobaw5ce" path="res://scenes/other/move.tscn" id="3_qqgpb"]
 [ext_resource type="PackedScene" uid="uid://c8i8e6a5aumby" path="res://scenes/mobs/player/PlayerUI.tscn" id="4_qqgpb"]
+[ext_resource type="Texture2D" uid="uid://2b67ibmu80my" path="res://assets/mobs/cat/cat1.png" id="5_2knn1"]
 [ext_resource type="PackedScene" uid="uid://chy8i4s334kf3" path="res://scenes/mobs/player/inventory.tscn" id="5_5ek8o"]
+[ext_resource type="Texture2D" uid="uid://dslnu1770sdj5" path="res://assets/mobs/cat/cat2.png" id="6_jtej0"]
+[ext_resource type="Texture2D" uid="uid://c8ck6gkoigjvk" path="res://assets/mobs/cat/cat3.png" id="7_hq4m8"]
+[ext_resource type="Texture2D" uid="uid://d4bgvwf3o5pao" path="res://assets/mobs/cat/cat4.png" id="8_0qipk"]
+[ext_resource type="Texture2D" uid="uid://br5um5wnmflj5" path="res://assets/mobs/cat/cat5.png" id="9_58hb7"]
+[ext_resource type="Texture2D" uid="uid://ch0xew5ky26i5" path="res://assets/mobs/cat/cat6.png" id="10_i3uir"]
+[ext_resource type="Texture2D" uid="uid://c6u8egugsy0lh" path="res://assets/mobs/cat/cat7.png" id="11_xowfy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35cim"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fqjn1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2knn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jtej0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hq4m8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0qipk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_58hb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i3uir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xowfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i3uir")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
 
 [node name="cat" type="CharacterBody2D"]
 script = ExtResource("1_3jyd3")
@@ -14,17 +57,24 @@ script = ExtResource("1_3jyd3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_35cim")
 
-[node name="CatTest" type="Sprite2D" parent="."]
-position = Vector2(1.7881393e-07, 0)
-scale = Vector2(0.062499996, 0.060037527)
-texture = ExtResource("2_35cim")
-
-[node name="Camera2D" type="Camera2D" parent="CatTest"]
-zoom = Vector2(2, 2)
-
 [node name="Move" parent="." instance=ExtResource("3_qqgpb")]
 
 [node name="inventory" parent="." instance=ExtResource("5_5ek8o")]
 
 [node name="playerUI" parent="." node_paths=PackedStringArray("playerInventory") instance=ExtResource("4_qqgpb")]
 playerInventory = NodePath("../inventory")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1.7881393e-07, 0)
+scale = Vector2(0.062499996, 0.060037527)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 2272
+limit_bottom = 1312
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_fqjn1")
+animation = &"idle"
+frame_progress = 0.50568235

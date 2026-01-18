@@ -41,6 +41,12 @@ public partial class MossDrawer : TileMapLayer
                 UpdateTileMask(new Vector2I(x, y));
     }
 
+    public bool HasMoss(Vector2 position)
+    {
+        Vector2I putPoint = LocalToMap(ToLocal(position));
+        return HasTile(putPoint);
+    }
+
     private void UpdateTileMask(Vector2I coords)
     {
         if (GetCellSourceId(coords) == -1) return;

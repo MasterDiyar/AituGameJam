@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://0uo7vav0gdia"]
+
+[ext_resource type="Script" uid="uid://wk2ell6bhpjq" path="res://scripts/items/Item.cs" id="1_qgcr1"]
+[ext_resource type="PackedScene" uid="uid://baf52hmj5fu64" path="res://scenes/actions/action_node.tscn" id="2_ibrsm"]
+
+[node name="CottonSeed" type="Sprite2D"]
+script = ExtResource("1_qgcr1")
+Count = 1
+Type = "seed"
+itemID = 5
+
+[node name="actionNode" parent="." instance=ExtResource("2_ibrsm")]
+id = 5

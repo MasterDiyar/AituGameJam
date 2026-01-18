@@ -18,7 +18,7 @@ public partial class MainCatMove : Node2D
     public override void _PhysicsProcess(double delta)
     {
         Vector2 move = Input.GetVector("a", "d", "w", "s");
-        if (!move.Equals(Vector2.Zero))
+        if (move.Equals(Vector2.Zero))
             Speed -=(Speed > 0) ? Acceleration * (float)delta : 0;
         Speed +=(Speed < myCat.MaxSpeed) ? Acceleration * (float)delta : 0;
         myCat.Velocity = move.Normalized() * Speed;

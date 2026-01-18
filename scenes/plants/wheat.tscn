@@ -16,8 +16,10 @@ Coords = Vector2i(3, 5)
 metadata/_custom_type_script = "uid://bxhdt16be57qo"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6oho8"]
+size = Vector2(23, 47)
 
 [node name="Wheat" type="Area2D" node_paths=PackedStringArray("GrowthTimer", "GrowSprite")]
+texture_filter = 3
 script = ExtResource("1_yhkry")
 Hp = 121.0
 GrowthTimer = NodePath("Timer")
@@ -26,8 +28,10 @@ GrowSprite = NodePath("Sprite2D")
 InventoryItems = Array[Object]([SubResource("Resource_ccrg6")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 0.5)
 shape = SubResource("RectangleShape2D_6oho8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 8.0

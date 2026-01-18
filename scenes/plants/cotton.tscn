@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr6r0tjja1jjy"]
+
+[ext_resource type="Script" uid="uid://bq080sqjn0fsm" path="res://scripts/plants/Cotton.cs" id="1_tvfkc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyb4l"]
+size = Vector2(61, 68)
+
+[node name="cotton" type="Area2D"]
+texture_filter = 3
+script = ExtResource("1_tvfkc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 13)
+shape = SubResource("RectangleShape2D_kyb4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

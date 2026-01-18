@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://e313d3ckxpvx"]
+
+[ext_resource type="Script" uid="uid://f2x545pj8dby" path="res://scripts/plants/Plant.cs" id="1_1uffn"]
+[ext_resource type="Texture2D" uid="uid://bmdr6cx7r8smb" path="res://assets/plants/romashka1.png" id="2_55q5p"]
+[ext_resource type="Texture2D" uid="uid://bha2oinwldqfw" path="res://assets/plants/romashka2.png" id="3_uskyr"]
+[ext_resource type="Texture2D" uid="uid://b7bpldkemtehq" path="res://assets/plants/romashka3.png" id="4_hbtqh"]
+[ext_resource type="Texture2D" uid="uid://cl5ixv860nqvs" path="res://assets/plants/romashka4.png" id="5_pqhcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bk1ii"]
+size = Vector2(25, 41)
+
+[node name="romashka" type="Area2D" node_paths=PackedStringArray("GrowthTimer", "GrowSprite")]
+texture_filter = 3
+script = ExtResource("1_1uffn")
+Hp = 80.0
+GrowthTimer = NodePath("Timer")
+GrowTexture = Array[Texture2D]([ExtResource("2_55q5p"), ExtResource("3_uskyr"), ExtResource("4_hbtqh"), ExtResource("5_pqhcj")])
+GrowSprite = NodePath("Sprite2D")
+DieChance = 30.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_bk1ii")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
