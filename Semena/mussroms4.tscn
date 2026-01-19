@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbop1qbvvqttd"]
+
+[ext_resource type="PackedScene" uid="uid://c6cafesym0qyy" path="res://Semena/cotton4.tscn" id="1_l5e8k"]
+[ext_resource type="Texture2D" uid="uid://briyybcrw1l10" path="res://assets/plants/mushroomgrain.png" id="2_1s14g"]
+
+[node name="SeedTile" instance=ExtResource("1_l5e8k")]
+
+[node name="ClickButton" parent="." index="0"]
+BaseScenePath = "res://Semena/mushrooms4.tscn"
+Price = 10
+
+[node name="wheat" parent="MarginContainer/VBoxContainer" index="0"]
+text = "Mushroom"
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer" index="1"]
+texture = ExtResource("2_1s14g")
+
+[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
+text = " 10 coins"

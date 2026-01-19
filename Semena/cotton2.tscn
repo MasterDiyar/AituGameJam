@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr4pumvuhflga"]
+
+[ext_resource type="PackedScene" uid="uid://c6cafesym0qyy" path="res://Semena/cotton4.tscn" id="1_qv0hw"]
+
+[node name="SeedTile" instance=ExtResource("1_qv0hw")]
+
+[node name="ClickButton" parent="." index="0"]
+Price = 10
+IsSell = false
+
+[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
+text = " 10 coins"

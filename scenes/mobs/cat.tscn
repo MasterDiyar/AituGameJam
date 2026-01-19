@@ -52,7 +52,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="cat" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="cat" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["player"]]
 script = ExtResource("1_3jyd3")
 sprite = NodePath("AnimatedSprite2D")
 
@@ -62,10 +62,7 @@ shape = SubResource("RectangleShape2D_2knn1")
 
 [node name="Move" parent="." instance=ExtResource("3_qqgpb")]
 
-[node name="inventory" parent="." instance=ExtResource("5_5ek8o")]
-
-[node name="playerUI" parent="." node_paths=PackedStringArray("playerInventory") instance=ExtResource("4_qqgpb")]
-playerInventory = NodePath("../inventory")
+[node name="playerUI" parent="." instance=ExtResource("4_qqgpb")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1.7881393e-07, 0)
@@ -82,3 +79,5 @@ sprite_frames = SubResource("SpriteFrames_fqjn1")
 animation = &"idle"
 frame_progress = 0.6172287
 offset = Vector2(-16, -16)
+
+[node name="inventory" parent="." groups=["player"] instance=ExtResource("5_5ek8o")]

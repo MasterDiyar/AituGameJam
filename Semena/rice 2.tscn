@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c358af36syp2t"]
+
+[ext_resource type="PackedScene" uid="uid://co8vgnijef4sy" path="res://Semena/Rice.tscn" id="1_a78nf"]
+
+[node name="SeedTile" instance=ExtResource("1_a78nf")]
+
+[node name="ClickButton" parent="." index="0"]
+Price = 8
+IsSell = false
+
+[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
+text = " 8 coins"

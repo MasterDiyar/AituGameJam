@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://jn62uvctt40c"]
+
+[ext_resource type="PackedScene" uid="uid://by8y5ckb81ea0" path="res://Semena/cactus4.tscn" id="1_d7spw"]
+[ext_resource type="Texture2D" uid="uid://c6b1rn0vi5hbl" path="res://assets/plants/romsahkagrains.png" id="2_te2en"]
+
+[node name="SeedTile" instance=ExtResource("1_d7spw")]
+
+[node name="ClickButton" parent="." index="0"]
+BaseScenePath = "res://Semena/chamomile.tscn"
+Price = 7
+
+[node name="wheat" parent="MarginContainer/VBoxContainer" index="0"]
+text = "Сhamomile"
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer" index="1"]
+texture = ExtResource("2_te2en")
+
+[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
+text = " 7 coins"

@@ -11,9 +11,8 @@ config_version=5
 [application]
 
 config/name="AITUgameJam"
-run/main_scene="uid://cd3lpw0vdtjpo"
+run/main_scene="uid://cq1vf66gp04v2"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
@@ -27,6 +26,9 @@ project/assembly_name="AITUgameJam"
 
 map=""
 seed=""
+shop_ui=""
+player=""
+inventory=""
 
 [input]
 

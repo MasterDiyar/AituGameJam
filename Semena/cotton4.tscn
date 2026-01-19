@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6cafesym0qyy"]
+
+[ext_resource type="PackedScene" uid="uid://co8vgnijef4sy" path="res://Semena/Rice.tscn" id="1_qygut"]
+[ext_resource type="Texture2D" uid="uid://cknepuigvux4v" path="res://assets/plants/cottongrains.png" id="2_do0t8"]
+
+[node name="SeedTile" instance=ExtResource("1_qygut")]
+
+[node name="ClickButton" parent="." index="0"]
+BaseScenePath = "res://Semena/cotton4.tscn"
+Price = 8
+
+[node name="wheat" parent="MarginContainer/VBoxContainer" index="0"]
+text = "Cotton"
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer" index="1"]
+texture = ExtResource("2_do0t8")
+
+[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
+text = " 8 coins"

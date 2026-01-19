@@ -1,0 +1,263 @@
+[gd_scene load_steps=20 format=3 uid="uid://cyqi63ami534"]
+
+[ext_resource type="PackedScene" uid="uid://dp3w5dwvguv66" path="res://Semena/wheat4.tscn" id="1_arfta"]
+[ext_resource type="Script" uid="uid://b1xnihqxexhs7" path="res://scripts/shop/ShopUIControllerSimple.cs" id="1_m5ysm"]
+[ext_resource type="PackedScene" uid="uid://co8vgnijef4sy" path="res://Semena/Rice.tscn" id="2_jsmax"]
+[ext_resource type="PackedScene" uid="uid://by8y5ckb81ea0" path="res://Semena/cactus4.tscn" id="3_ccr50"]
+[ext_resource type="PackedScene" uid="uid://c6cafesym0qyy" path="res://Semena/cotton4.tscn" id="4_han1p"]
+[ext_resource type="PackedScene" uid="uid://cbop1qbvvqttd" path="res://Semena/mussroms4.tscn" id="5_06ldd"]
+[ext_resource type="PackedScene" uid="uid://jn62uvctt40c" path="res://Semena/chamomile.tscn" id="6_ok5pp"]
+[ext_resource type="PackedScene" uid="uid://b1pnte3qxew0u" path="res://Semena/Wheat2.tscn" id="7_ia46t"]
+[ext_resource type="PackedScene" uid="uid://c358af36syp2t" path="res://Semena/rice 2.tscn" id="8_qfn3a"]
+[ext_resource type="PackedScene" uid="uid://b6ycj3fnxfoak" path="res://Semena/cactus2.tscn" id="9_m5ysm"]
+[ext_resource type="PackedScene" uid="uid://cr4pumvuhflga" path="res://Semena/cotton2.tscn" id="10_8l6mh"]
+[ext_resource type="PackedScene" uid="uid://dbca1rcjbavdx" path="res://Semena/mushroom2.tscn" id="11_6iqus"]
+[ext_resource type="PackedScene" uid="uid://isdpa1frkefm" path="res://Semena/romashka2.tscn" id="12_pyoh4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w63dr"]
+bg_color = Color(0.9607843, 0.96862745, 0.9843137, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8392157, 0.8627451, 0.9098039, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fscwk"]
+bg_color = Color(0.93333334, 0.9490196, 0.972549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8392157, 0.8627451, 0.9098039, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4r40"]
+bg_color = Color(0.8666667, 0.9019608, 0.95686275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxujh"]
+bg_color = Color(0.8980392, 0.9254902, 0.96862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfn3a"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5ysm"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="ShopUI" type="CanvasLayer" groups=["shop_ui"]]
+script = ExtResource("1_m5ysm")
+MoneyLabelPath = NodePath("PopupPanel/MarginContainer/VBoxContainer/Header/MoneyLabel")
+PopupPanelPath = NodePath("PopupPanel")
+CloseButtonPath = NodePath("PopupPanel/MarginContainer/VBoxContainer/Header/Close")
+SellGridPath = NodePath("PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn/Scroll/SellGrid")
+BuyGridPath = NodePath("PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn/Scroll2/GridContainer")
+
+[node name="PopupPanel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -284.0
+offset_right = 470.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w63dr")
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.12156863, 0.16078432, 0.21568628, 1)
+theme_override_font_sizes/font_size = 26
+text = "Seed Shop"
+
+[node name="Spacer" type="Control" parent="PopupPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneyLabel" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+text = " 0 coins"
+horizontal_alignment = 2
+
+[node name="Close" type="Button" parent="PopupPanel/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12156863, 0.16078432, 0.21568628, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_fscwk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l4r40")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dxujh")
+text = "✕"
+
+[node name="Body" type="HBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="Sell" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.21568628, 0.25490198, 0.31764707, 1)
+theme_override_font_sizes/font_size = 18
+text = "Sell"
+
+[node name="Buy" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.21568628, 0.25490198, 0.31764707, 1)
+theme_override_font_sizes/font_size = 18
+text = "Buy"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qfn3a")
+
+[node name="SellColumn" type="VBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Scroll" type="ScrollContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SellGrid" type="GridContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="SeedTile" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn/Scroll/SellGrid" instance=ExtResource("1_arfta")]
+layout_mode = 2
+
+[node name="SeedTile2" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn/Scroll/SellGrid" instance=ExtResource("2_jsmax")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile3" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn/Scroll/SellGrid" instance=ExtResource("3_ccr50")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile4" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn/Scroll/SellGrid" instance=ExtResource("4_han1p")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile5" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn/Scroll/SellGrid" instance=ExtResource("5_06ldd")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile6" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer/SellColumn/Scroll/SellGrid" instance=ExtResource("6_ok5pp")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PanelContainer2" type="PanelContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_m5ysm")
+
+[node name="BuyColumn" type="VBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Scroll2" type="ScrollContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn/Scroll2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="SeedTile" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn/Scroll2/GridContainer" instance=ExtResource("7_ia46t")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile2" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn/Scroll2/GridContainer" instance=ExtResource("8_qfn3a")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile3" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn/Scroll2/GridContainer" instance=ExtResource("9_m5ysm")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile4" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn/Scroll2/GridContainer" instance=ExtResource("10_8l6mh")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile5" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn/Scroll2/GridContainer" instance=ExtResource("11_6iqus")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SeedTile6" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2/BuyColumn/Scroll2/GridContainer" instance=ExtResource("12_pyoh4")]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="PopupPanel/MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12

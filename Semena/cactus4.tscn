@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://by8y5ckb81ea0"]
+
+[ext_resource type="PackedScene" uid="uid://cbop1qbvvqttd" path="res://Semena/mussroms4.tscn" id="1_jxemj"]
+[ext_resource type="Texture2D" uid="uid://dho36klirvwno" path="res://assets/plants/cactusgrains.png" id="2_o06lb"]
+
+[node name="SeedTile" instance=ExtResource("1_jxemj")]
+
+[node name="ClickButton" parent="." index="0"]
+BaseScenePath = "res://Semena/cactus4.tscn"
+Price = 5
+
+[node name="wheat" parent="MarginContainer/VBoxContainer" index="0"]
+text = "Cactus"
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer" index="1"]
+texture = ExtResource("2_o06lb")
+
+[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
+text = " 5 coins"

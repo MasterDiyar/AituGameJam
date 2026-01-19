@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://mehb1sarge1y"]
+
+[ext_resource type="Script" uid="uid://bx37mxh2avq6q" path="res://scripts/shop/TraderShopTrigger.cs" id="1_g6w5m"]
+[ext_resource type="Texture2D" uid="uid://c5kk5gd4glmx5" path="res://assets/trader/trader1.png" id="1_ib67v"]
+[ext_resource type="Texture2D" uid="uid://u0ay2a3ibrxj" path="res://assets/trader/trader2.png" id="2_g6w5m"]
+[ext_resource type="Texture2D" uid="uid://ucsiny7jg1go" path="res://assets/trader/trader3.png" id="3_cftsm"]
+[ext_resource type="Texture2D" uid="uid://b5usyguvk721f" path="res://assets/trader/trader4.png" id="4_i5aug"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ib67v"]
+radius = 18.741665
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xr854"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ib67v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g6w5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cftsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i5aug")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[node name="trader" type="Node2D"]
+texture_filter = 3
+scale = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_g6w5m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ib67v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4375, 0.375)
+sprite_frames = SubResource("SpriteFrames_xr854")
+animation = &"idle"
+frame_progress = 0.33761552

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbca1rcjbavdx"]
+
+[ext_resource type="PackedScene" uid="uid://cbop1qbvvqttd" path="res://Semena/mussroms4.tscn" id="1_3px32"]
+
+[node name="SeedTile" instance=ExtResource("1_3px32")]
+
+[node name="ClickButton" parent="." index="0"]
+Price = 20
+IsSell = false
+
+[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
+text = " 20 coins"
