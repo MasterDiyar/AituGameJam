@@ -19,13 +19,15 @@ animations = [{
 }]
 
 [node name="infant" node_paths=PackedStringArray("AnimatedSprite") instance=ExtResource("1_3c6fi")]
+Acceleration = 325.0
 AttackInterval = 1.5
-AttackRange = 20.0
+AttackRange = 40.0
 AnimatedSprite = NodePath("AnimatedSprite2D")
-MaxSpeed = 250.0
-Damage = 15.0
+MaxHp = 180.0
+MaxSpeed = 125.0
+Damage = 17.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2" groups=["enemy"]]
 texture_filter = 3
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_u5r73")

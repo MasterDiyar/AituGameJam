@@ -26,5 +26,18 @@ public partial class ThrowedItem : Area2D
 			if (inv.AddItem(item))
 				QueueFree();
 		}
+		else if (body is CatWarrior warrior)
+		{
+			switch (item.itemID)
+			{
+				case 3:
+					warrior.Hp += 50;
+					break;
+				case 4:
+					warrior.Damage += 100;
+					break;
+			}
+			QueueFree();
+		}
 	}
 }

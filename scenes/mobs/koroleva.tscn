@@ -14,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://clk5ywvi3imog" path="res://assets/mobs/coroleva/ant-mother (2)10.png" id="8_xmia3"]
 [ext_resource type="Texture2D" uid="uid://olqkvqn3p0j" path="res://assets/mobs/coroleva/ant-mother (2)11.png" id="9_ns2xy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t42el"]
-size = Vector2(60, 19)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nkyyr"]
+radius = 7.0
+height = 57.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nstyq"]
 animations = [{
@@ -63,15 +64,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ant" instance=ExtResource("1_wlvx0")]
+[node name="ant" node_paths=PackedStringArray("AnimatedSprite") instance=ExtResource("1_wlvx0")]
 script = ExtResource("2_nkyyr")
+AttackRange = 48.0
+AnimatedSprite = NodePath("AnimatedSprite2D")
+MaxSpeed = 175.0
+Damage = 30.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1, 9.5)
-shape = SubResource("RectangleShape2D_t42el")
+rotation = 1.7889625
+shape = SubResource("CapsuleShape2D_nkyyr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2" groups=["enemy"]]
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_nstyq")
-animation = &"Dead"
-frame = 6
-frame_progress = 1.0

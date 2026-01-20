@@ -9,6 +9,7 @@ texture = ExtResource("2_l6qhb")
 offset = Vector2(0, -8)
 Count = 1
 Type = "hoe"
+itemID = 90
 
 [node name="mossActioner" parent="." index="0" node_paths=PackedStringArray("timer") instance=ExtResource("3_l6qhb")]
 timer = NodePath("../recharge")

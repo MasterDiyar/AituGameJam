@@ -4,9 +4,8 @@ namespace AITUgameJam.scripts.shop
 {
     public partial class SeedButton : Button
     {
-        // Путь к сцене БЕЗ "2", например: res://Semena/wheat.tscn
         [Export] public string BaseScenePath = "";
-
+        [Export] public int id = 0;
         [Export] public int Price = 1;
         [Export] public bool IsSell = true;
 
@@ -15,10 +14,20 @@ namespace AITUgameJam.scripts.shop
             if (string.IsNullOrEmpty(BaseScenePath)) return null;
             return GD.Load<PackedScene>(BaseScenePath);
         }
+        bool wool = false;
 
         public override void _Ready()
         {
-            FocusMode = FocusModeEnum.None;
+            GD.Print("Ready");
+            GetParent<Container>().FocusEntered += () => { wool = true; GD.Print("MouseEntered"); };
+            GetParent<Container>().FocusExited += () => wool = false;
+            
+        }
+
+        public override void _Process(double delta)
+        {
+            if (wool && Input.IsActionJustPressed("lm"))
+                EmitSignal("Pressed");
         }
     }
 }

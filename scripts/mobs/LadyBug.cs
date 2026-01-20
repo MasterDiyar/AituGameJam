@@ -12,7 +12,7 @@ public partial class LadyBug : Unit
 
     private float _attackTimer = 0f;
     private Vector2 _velocity = Vector2.Zero;
-    private Cat _currentTarget;
+    private Kitten _currentTarget;
 
     [Export] public AnimatedSprite2D AnimatedSprite;
     [Export] private Timer checkTimer;
@@ -27,7 +27,7 @@ public partial class LadyBug : Unit
 
     void SearchTarget()
     {
-        var cats = GetTree().GetNodesInGroup("cats").OfType<Cat>().ToList();
+        var cats = GetTree().GetNodesInGroup("cat").OfType<Kitten>().ToList();
 
         var closest = cats
             .OrderBy(c => c.GlobalPosition.DistanceSquaredTo(GlobalPosition))

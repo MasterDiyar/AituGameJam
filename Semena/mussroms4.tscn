@@ -5,10 +5,6 @@
 
 [node name="SeedTile" instance=ExtResource("1_l5e8k")]
 
-[node name="ClickButton" parent="." index="0"]
-BaseScenePath = "res://Semena/mushrooms4.tscn"
-Price = 10
-
 [node name="wheat" parent="MarginContainer/VBoxContainer" index="0"]
 text = "Mushroom"
 
@@ -16,4 +12,10 @@ text = "Mushroom"
 texture = ExtResource("2_1s14g")
 
 [node name="price" parent="MarginContainer/VBoxContainer" index="2"]
-text = " 10 coins"
+text = "10 coins"
+
+[node name="ClickButton" parent="." index="1"]
+action_mode = 0
+BaseScenePath = "res://Semena/mushrooms4.tscn"
+id = 4
+Price = 10

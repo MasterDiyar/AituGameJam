@@ -4,9 +4,9 @@
 
 [node name="SeedTile" instance=ExtResource("1_f5qkv")]
 
-[node name="ClickButton" parent="." index="0"]
+[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
+text = "15 coins"
+
+[node name="ClickButton" parent="." index="1"]
 Price = 15
 IsSell = false
-
-[node name="price" parent="MarginContainer/VBoxContainer" index="2"]
-text = " 15 coins"

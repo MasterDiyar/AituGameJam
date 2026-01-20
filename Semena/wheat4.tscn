@@ -16,21 +16,16 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="SeedTile" type="PanelContainer"]
+texture_filter = 3
 custom_minimum_size = Vector2(0, 160)
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_right = 0.056
+anchor_bottom = 0.256
+offset_right = -24.512001
+offset_bottom = -125.888
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_40b45")
-
-[node name="ClickButton" type="Button" parent="."]
-layout_mode = 2
-focus_mode = 0
-flat = true
-script = ExtResource("1_tuhdb")
-BaseScenePath = "res://Semena/wheat4.tscn"
-Price = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -41,6 +36,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 6
 alignment = 1
 
@@ -66,3 +62,11 @@ theme_override_colors/font_color = Color(0.29411766, 0.33333334, 0.3882353, 1)
 theme_override_font_sizes/font_size = 13
 text = "2 coins"
 horizontal_alignment = 1
+
+[node name="ClickButton" type="Button" parent="."]
+z_index = 100
+layout_mode = 2
+flat = true
+script = ExtResource("1_tuhdb")
+BaseScenePath = "res://Semena/wheat4.tscn"
+Price = 2

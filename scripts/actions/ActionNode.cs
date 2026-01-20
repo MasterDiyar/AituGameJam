@@ -35,6 +35,8 @@ public partial class ActionNode : Node2D
             var inv = Item.GetParent().GetNode<Inventory>("inventory");
             inv.RemoveItem(Item.InventoryIndex);
         }
+        
+        Item.MyInventory.EmitCurrent(Item.Count);
     }
 
     public override void _ExitTree()

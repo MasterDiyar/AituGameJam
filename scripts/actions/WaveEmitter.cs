@@ -8,6 +8,7 @@ public partial class WaveEmitter : Node2D
 	[Export] private PackedScene[] mobs = [GD.Load<PackedScene>("res://scenes/mobs/worker.tscn"),
 		GD.Load<PackedScene>("res://scenes/mobs/infant.tscn"),
 		GD.Load<PackedScene>("res://scenes/mobs/koroleva.tscn"),
+		GD.Load<PackedScene>("res://scenes/mobs/ladybug.tscn")
 	];
 	[Export] private Timer timer;
 	private Node _spawnTarget;
@@ -27,12 +28,11 @@ public partial class WaveEmitter : Node2D
 	private void TimerOnTimeout()
 	{
 		Wave++;
-		if (Wave < 15)
+		if (Wave < _WaveData.Count)
 			HandMade(Wave);
 		else
-		{
-			timer.Stop();
-		}
+			AutoWaves(Wave);
+		
 	}
 	
 	public struct MSI
@@ -49,8 +49,13 @@ public partial class WaveEmitter : Node2D
 
 	private List<MSI[]> _WaveData =
 	[
-		[M(1, 0, 2), M(2, 0, 2)],
-		[M(1, 0, 3), M(1, 1, 1), M(2, 0, 3), M(3, 0, 1)]
+		[M(1, 0, 1), M(2, 0, 1)],
+		[M(1, 0, 2), M(1, 1, 1), M(2, 0, 2), M(3, 0, 1)],
+		[M(1, 0, 3), M(1, 1, 1), M(2, 0, 3), M(3, 0, 1)],
+		[M(1, 1, 2), M(1, 2, 1), M(2, 3, 1)],
+		[M(1, 0, 5), M(1, 1, 1), M(2, 2, 1), M(3, 3, 2)],
+		[M(1, 0, 6), M(1, 1, 3), M(2, 0, 3), M(3, 0, 3)],
+		[M(1, 0, 6), M(1, 1, 3), M(2, 3, 3), M(3, 1, 3)],
 	];
 
 	private Node SpawnNode;
@@ -65,6 +70,34 @@ public partial class WaveEmitter : Node2D
 
 			for (int i = 0; i < info.Count; i++)
 				SpawnMob(prefab, center);
+		}
+	}
+
+	void AutoWaves(int wave)
+	{
+		if (_spawnTarget == null) return;
+		int difficultyIncrease = (wave - 7) / 3;
+    
+		int baseGroupsCount = 3; 
+		int totalGroups = baseGroupsCount + difficultyIncrease;
+
+		Random random = new Random();
+
+		for (int i = 0; i < totalGroups; i++)
+		{
+			int randomSPI = random.Next(1, Align.Length + 1); 
+			int randomMID = random.Next(0, mobs.Length);      
+        
+			int baseCount = random.Next(2, 5); 
+			int finalCount = baseCount + (wave / 4); 
+
+			Vector2 center = Align[randomSPI - 1];
+			PackedScene prefab = mobs[randomMID];
+
+			for (int j = 0; j < finalCount; j++)
+			{
+				SpawnMob(prefab, center);
+			}
 		}
 	}
 	

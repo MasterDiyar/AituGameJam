@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using AITUgameJam.scripts.interfaces;
 using AITUgameJam.scripts.plants;
 
 namespace AITUgameJam.scripts.mobs;
@@ -21,7 +22,7 @@ public partial class AntUnit : Unit
 
     
     Vector2 GoTo = Vector2.Zero;
-    private Plant _currentTarget;
+    private Node2D _currentTarget;
     [Export] private Timer checkTimer;
     private bool check = false;
 
@@ -39,16 +40,31 @@ public partial class AntUnit : Unit
         var list = GetTree().GetFirstNodeInGroup("map").GetChildren().OfType<Plant>().ToList();
         var closest = list.OrderBy(p => p.GlobalPosition.DistanceSquaredTo(GlobalPosition))
             .FirstOrDefault();
-        if (closest == null)
+        if (closest != null)
         {
-            check = true;
+            _currentTarget = closest;
+            GoTo = _currentTarget.GlobalPosition;
+            check = false;
+            checkTimer.Stop();
             return;
         }
-        check = false;
-        _currentTarget = closest;
-        GoTo = closest.Position;
-        checkTimer.Stop();
         
+        var kittens = GetTree().GetNodesInGroup("cat").OfType<Kitten>().ToList();
+        var closestKitten = kittens
+            .OrderBy(k => k.GlobalPosition.DistanceSquaredTo(GlobalPosition))
+            .FirstOrDefault();
+
+        if (closestKitten != null)
+        {
+            _currentTarget = closestKitten;
+            GoTo = _currentTarget.GlobalPosition;
+            check = false;
+            checkTimer.Stop();
+        } else {
+            check = true;
+            _currentTarget = null;
+            if (checkTimer.IsStopped()) checkTimer.Start();
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -85,7 +101,7 @@ public partial class AntUnit : Unit
             desiredVelocity,
             Acceleration * delta
         );
-
+        GoTo = _currentTarget.GlobalPosition;
         Velocity = _velocity;
         MoveAndSlide();
     }
@@ -105,13 +121,20 @@ public partial class AntUnit : Unit
             _attackTimer = 0f;
             return;
         }
+
+        
         _attackTimer += delta;
         if (_attackTimer >= AttackInterval)
         {
             _attackTimer -= AttackInterval;
-            _currentTarget.TakeDamage(Damage);
-            if (_currentTarget is Cactus)
-                TakeDamage(10 * _currentTarget.GrowIndex);
+            GD.Print(_currentTarget is IGetHurt, " ", _currentTarget.Name);
+            if (_currentTarget is IGetHurt gh)
+            {
+                gh.TakeDamage(Damage);
+                if (_currentTarget is Cactus ct)
+                    TakeDamage(10 * ct.GrowIndex);
+            }
+            
         }
     }
 

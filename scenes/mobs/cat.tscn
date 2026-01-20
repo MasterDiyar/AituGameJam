@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://ch0xew5ky26i5" path="res://assets/mobs/cat/cat6.png" id="10_i3uir"]
 [ext_resource type="Texture2D" uid="uid://c6u8egugsy0lh" path="res://assets/mobs/cat/cat7.png" id="11_xowfy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2knn1"]
-size = Vector2(36, 61)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2knn1"]
+radius = 14.0
+height = 61.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqjn1"]
 animations = [{
@@ -52,22 +53,21 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="cat" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["player"]]
+[node name="cat" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_3jyd3")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-17, -14.5)
-shape = SubResource("RectangleShape2D_2knn1")
+position = Vector2(-16, -14.5)
+shape = SubResource("CapsuleShape2D_2knn1")
 
 [node name="Move" parent="." instance=ExtResource("3_qqgpb")]
 
-[node name="playerUI" parent="." instance=ExtResource("4_qqgpb")]
+[node name="playerUI" parent="." node_paths=PackedStringArray("playerInventory") instance=ExtResource("4_qqgpb")]
+playerInventory = NodePath("../inventory")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1.7881393e-07, 0)
-scale = Vector2(0.062499996, 0.060037527)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.7, 1.7)
 limit_left = 0
 limit_top = 0
 limit_right = 2272
@@ -80,4 +80,4 @@ animation = &"idle"
 frame_progress = 0.6172287
 offset = Vector2(-16, -16)
 
-[node name="inventory" parent="." groups=["player"] instance=ExtResource("5_5ek8o")]
+[node name="inventory" parent="." groups=["inventory", "player"] instance=ExtResource("5_5ek8o")]

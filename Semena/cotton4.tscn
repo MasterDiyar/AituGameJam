@@ -7,6 +7,7 @@
 
 [node name="ClickButton" parent="." index="0"]
 BaseScenePath = "res://Semena/cotton4.tscn"
+id = 5
 Price = 8
 
 [node name="wheat" parent="MarginContainer/VBoxContainer" index="0"]

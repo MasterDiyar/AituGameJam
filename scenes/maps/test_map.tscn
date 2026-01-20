@@ -1,17 +1,15 @@
-[gd_scene load_steps=15 format=4 uid="uid://cq1vf66gp04v2"]
+[gd_scene load_steps=13 format=4 uid="uid://cq1vf66gp04v2"]
 
 [ext_resource type="Texture2D" uid="uid://y6o6ysvfsgjy" path="res://assets/tilemaps/earth tilemap.png" id="1_38prr"]
+[ext_resource type="Script" uid="uid://cfkmsor5jckfp" path="res://scripts/TestMap.cs" id="1_auue8"]
 [ext_resource type="TileSet" uid="uid://df1etmqs14fsw" path="res://scenes/maps/tiles/MossTileMap.tres" id="1_ybdod"]
 [ext_resource type="Script" uid="uid://boilt22g26nn7" path="res://scripts/mapEditor/MossDrawer.cs" id="2_2s55i"]
-[ext_resource type="PackedScene" uid="uid://vpqkia6q6oue" path="res://scenes/plants/wheat.tscn" id="4_a3b3n"]
 [ext_resource type="PackedScene" uid="uid://bk5p2ghpoe1o1" path="res://scenes/mobs/cat.tscn" id="5_a3b3n"]
-[ext_resource type="PackedScene" uid="uid://123kl312y2og" path="res://scenes/other/hpbar.tscn" id="6_qoqmi"]
-[ext_resource type="PackedScene" uid="uid://bb14de8v67w27" path="res://scenes/plants/shrooms.tscn" id="8_auue8"]
 [ext_resource type="PackedScene" uid="uid://gty7h3kwmjef" path="res://scenes/other/wave_emitter.tscn" id="8_ibx7c"]
-[ext_resource type="PackedScene" uid="uid://e313d3ckxpvx" path="res://scenes/plants/romashka.tscn" id="9_yti6m"]
-[ext_resource type="PackedScene" uid="uid://bhqv8xajmimv3" path="res://scenes/plants/cactus.tscn" id="10_q2e4k"]
-[ext_resource type="PackedScene" uid="uid://cr6r0tjja1jjy" path="res://scenes/plants/cotton.tscn" id="11_o5aat"]
-[ext_resource type="PackedScene" uid="uid://dxx6g14sc64si" path="res://scenes/plants/rise.tscn" id="12_qnp3f"]
+[ext_resource type="Texture2D" uid="uid://bwrk5p7jtn15s" path="res://assets/trader/telega1-export.png" id="9_00m6f"]
+[ext_resource type="PackedScene" uid="uid://mehb1sarge1y" path="res://assets/mobs/trader.tscn" id="10_3se8m"]
+[ext_resource type="PackedScene" uid="uid://u0meo7wfgn0o" path="res://scenes/mobs/cat_warrior.tscn" id="12_yti6m"]
+[ext_resource type="PackedScene" uid="uid://cklthcdsy2f6t" path="res://ui/trader_1.tscn" id="13_yti6m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qoqmi"]
 texture = ExtResource("1_38prr")
@@ -30,9 +28,11 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_qoqmi")
 
-[node name="testMap" type="Node2D" groups=["map"]]
+[node name="testMap" type="Node2D" node_paths=PackedStringArray("kitty") groups=["map"]]
 y_sort_enabled = true
 texture_filter = 3
+script = ExtResource("1_auue8")
+kitty = NodePath("cat")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 texture_filter = 3
@@ -44,31 +44,20 @@ texture_filter = 3
 tile_set = ExtResource("1_ybdod")
 script = ExtResource("2_2s55i")
 
-[node name="Wheat" parent="." instance=ExtResource("4_a3b3n")]
-position = Vector2(161.9268, 127.231255)
-
-[node name="hpbar" parent="Wheat" node_paths=PackedStringArray("p") instance=ExtResource("6_qoqmi")]
-p = NodePath("..")
-isPlant = true
-
-[node name="cat" parent="." instance=ExtResource("5_a3b3n")]
-position = Vector2(9, 1)
-
-[node name="hpbar" parent="cat" node_paths=PackedStringArray("u") instance=ExtResource("6_qoqmi")]
-u = NodePath("..")
+[node name="cat" parent="." groups=["cat", "player"] instance=ExtResource("5_a3b3n")]
+position = Vector2(396, 312)
 
 [node name="WaveEmitter" parent="." instance=ExtResource("8_ibx7c")]
 
-[node name="Area2D" parent="." instance=ExtResource("8_auue8")]
-position = Vector2(512.84546, 217.35446)
+[node name="CatWarrior" parent="." instance=ExtResource("12_yti6m")]
+position = Vector2(569, 214)
 
-[node name="romashka" parent="." instance=ExtResource("9_yti6m")]
-position = Vector2(301.9364, 238.26355)
+[node name="Telega1Export" type="Sprite2D" parent="."]
+position = Vector2(42, 270)
+texture = ExtResource("9_00m6f")
 
-[node name="cactus" parent="." instance=ExtResource("10_q2e4k")]
-position = Vector2(200.11823, 274.62717)
+[node name="trader" parent="." instance=ExtResource("10_3se8m")]
+position = Vector2(57, 283)
 
-[node name="cotton" parent="." instance=ExtResource("11_o5aat")]
-
-[node name="rise" parent="." instance=ExtResource("12_qnp3f")]
-position = Vector2(127.116455, 282.54095)
+[node name="Trader1" parent="." instance=ExtResource("13_yti6m")]
+position = Vector2(83, 414)

@@ -19,11 +19,14 @@ animations = [{
 }]
 
 [node name="worker" node_paths=PackedStringArray("AnimatedSprite") instance=ExtResource("1_80ato")]
+Acceleration = 250.0
+StopDistance = 8.0
+AttackRange = 20.0
 AnimatedSprite = NodePath("AnimatedSprite2D")
-MaxHp = 100.0
-MaxSpeed = 100.0
+MaxHp = 80.0
+MaxSpeed = 80.0
 
-[node name="CollisionShape2D" parent="." index="0"]
+[node name="CollisionShape2D" parent="." index="0" groups=["enemy"]]
 position = Vector2(-0.5, 9.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]

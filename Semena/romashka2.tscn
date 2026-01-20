@@ -5,6 +5,7 @@
 [node name="SeedTile" instance=ExtResource("1_x4gw2")]
 
 [node name="ClickButton" parent="." index="0"]
+id = 3
 Price = 17
 IsSell = false
 

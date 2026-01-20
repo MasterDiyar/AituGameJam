@@ -1,25 +1,25 @@
 using Godot;
-using AITUgameJam.scripts.mobs;
-
+using System;
 namespace AITUgameJam.scripts.mobs;
-
-public partial class Cat : Unit
+public partial class Cat : Kitten
 {
-    [Export] private AnimatedSprite2D sprite;
+	public override void _Ready()
+	{
+		base._Ready();
+		sprite.Play("idle");
+	}
 
     public bool UiBlocked { get; set; } = false;
 
-    public override void _Ready()
-    {
-        base._Ready();
-        sprite.Play("idle");
-    }
+    
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        AnimationWork();
-    }
+	public override void _Process(double delta)
+	{
+		if (Input.IsActionJustPressed("lm"))
+			leftClick?.Invoke();
+	
+		AnimationWork();
+	}
 
     void AnimationWork()
     {

@@ -36,13 +36,11 @@ namespace AITUgameJam.scripts.shop
             _staticInfo = GetNodeOrNull<StaticInfo>("/root/StaticInfo");
             if (_staticInfo == null)
                 GD.PushError("StaticInfo not found at /root/StaticInfo (Autoload).");
-
-          
-           
-            // Подключаем все кнопки внутри SellGrid и BuyGrid
+            
             HookGrid(GetNode<GridContainer>(SellGridPath));
             HookGrid(GetNode<GridContainer>(BuyGridPath));
 
+            RefreshMoney();
             Close();
         }
         private void RefreshMoney()
@@ -64,23 +62,35 @@ namespace AITUgameJam.scripts.shop
         {
             for (int i = 0; i < grid.GetChildCount(); i++)
             {
-                if (grid.GetChild(i) is SeedButton btn)
+                SeedButton btn = null;
+                var child = grid.GetChild(i);
+                if (child is SeedButton s) btn = s;
+                else if (child.GetChildCount() > 0 && child.GetChild(1) is SeedButton s2) btn = s2;
+
+                if (btn != null)
                 {
-                    btn.Pressed += () => OnSeedPressed(btn);
+                    GD.Print("Hooking button: ", btn.Name);
+                    SeedButton currentBtn = btn;
+                    currentBtn.Pressed += () =>
+                    {
+                        GD.Print("press");
+                        OnSeedPressed(currentBtn);
+                    };
                 }
             }
         }
 
         private void OnSeedPressed(SeedButton btn)
         {
+            GD.Print("Pressed: ", btn.Name);
             ResolveInventory();
             if (_inventory == null || _staticInfo == null) return;
 
             var baseScene = btn.GetBaseScene();
             if (baseScene == null) return;
 
-            if (btn.IsSell) SellAll(baseScene, btn.Price);
-            else BuyOne(baseScene, btn.Price);
+            if (btn.IsSell) SellAll(baseScene, btn.Price, btn.id);
+            else BuyOne(baseScene, btn.Price, btn.id);
         }
 
 
@@ -89,6 +99,7 @@ namespace AITUgameJam.scripts.shop
         {
             _player.UiBlocked = true;
             ResolveInventory();
+            RefreshMoney();
             Visible = true;
             _popup.Visible = true;
 
@@ -105,7 +116,7 @@ namespace AITUgameJam.scripts.shop
         }
 
 
-        private void SellAll(PackedScene baseScene, int sellPrice)
+        private void SellAll(PackedScene baseScene, int sellPrice, int itemId)
         {
             int idx = FindInventoryIndex(baseScene);
             if (idx < 0) return;
@@ -120,7 +131,7 @@ namespace AITUgameJam.scripts.shop
             RefreshMoney();
         }
 
-        private void BuyOne(PackedScene baseScene, int buyPrice)
+        private void BuyOne(PackedScene baseScene, int buyPrice, int itemId)
         {
             if (_staticInfo.Money < buyPrice) return;
 
@@ -144,6 +155,8 @@ namespace AITUgameJam.scripts.shop
             for (int i = 0; i < _inventory.items.Length; i++)
             {
                 var s = _inventory.items[i];
+                
+                GD.Print($"Comparing: {s.ResourcePath} == {path}");
                 if (s != null && s.ResourcePath == path)
                     return i;
             }

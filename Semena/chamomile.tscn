@@ -4,10 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c6b1rn0vi5hbl" path="res://assets/plants/romsahkagrains.png" id="2_te2en"]
 
 [node name="SeedTile" instance=ExtResource("1_d7spw")]
-
-[node name="ClickButton" parent="." index="0"]
-BaseScenePath = "res://Semena/chamomile.tscn"
-Price = 7
+offset_right = 41.488
+offset_bottom = 0.11199951
 
 [node name="wheat" parent="MarginContainer/VBoxContainer" index="0"]
 text = "Сhamomile"
@@ -16,4 +14,9 @@ text = "Сhamomile"
 texture = ExtResource("2_te2en")
 
 [node name="price" parent="MarginContainer/VBoxContainer" index="2"]
-text = " 7 coins"
+text = "7 coins"
+
+[node name="ClickButton" parent="." index="1"]
+BaseScenePath = "res://Semena/chamomile.tscn"
+id = 3
+Price = 7

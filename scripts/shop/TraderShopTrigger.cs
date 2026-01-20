@@ -3,7 +3,7 @@ using AITUgameJam.scripts.shop;
 
 public partial class TraderShopTrigger : Area2D
 {
-    private ShopUIControllerSimple _shop;
+    private HBoxContainers _shop;
 
     public override void _Ready()
     {
@@ -17,7 +17,7 @@ public partial class TraderShopTrigger : Area2D
     {
         if (_shop != null) return;
         var n = GetTree().GetFirstNodeInGroup("shop_ui");
-        _shop = n as ShopUIControllerSimple;
+        _shop = n as HBoxContainers;
         if (_shop == null) GD.PushError("ShopUI not found. Add group 'shop_ui' to ShopUI node.");
     }
 

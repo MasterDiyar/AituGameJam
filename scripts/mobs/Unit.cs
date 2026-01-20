@@ -17,12 +17,6 @@ public partial class Unit : CharacterBody2D, IGetHurt
     {
         Hp = MaxHp;
     }
-
-    public override void _Process(double delta)
-    {
-        if (Input.IsActionJustPressed("lm"))
-            leftClick?.Invoke();
-    }
     
     public virtual void TakeDamage(float damage)
     {

@@ -18,8 +18,8 @@ public partial class Inventory : Node2D
 
     public override void _Ready()
     {
-        items[0] = GD.Load<PackedScene>("res://scenes/items/hoe.tscn");
-        counter[0] = 1;
+        AddItem(GD.Load<PackedScene>("res://scenes/items/hoe.tscn").Instantiate<Item>());
+        AddItem(GD.Load<PackedScene>("res://scenes/items/kosa.tscn").Instantiate<Item>());
         Parent = GetParent<Unit>();
         UpdateCurrentItem();
     }
@@ -113,6 +113,7 @@ public partial class Inventory : Node2D
         if (index < 0 || index >= items.Length) return;
     
         items[index] = null;
+        counter[index] = 0;
         EmitSignal(SignalName.ItemChanged, index, (PackedScene)null);
     
         if (index == currentIndex)

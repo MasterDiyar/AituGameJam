@@ -27,7 +27,6 @@ public partial class Item : Sprite2D
 
     protected virtual void mhInvoker()
     {
-        MyInventory.EmitCurrent(Count);
         MainHandAction?.Invoke();
     }
     
