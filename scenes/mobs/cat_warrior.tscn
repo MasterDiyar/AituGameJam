@@ -1,0 +1,111 @@
+[gd_scene load_steps=18 format=3 uid="uid://u0meo7wfgn0o"]
+
+[ext_resource type="Script" uid="uid://4sdhobtxp0bh" path="res://scripts/mobs/CatWarrior.cs" id="1_k6w6f"]
+[ext_resource type="Texture2D" uid="uid://bwcu8yhnx27pp" path="res://assets/mobs/nohand/kitten1.png" id="2_o10pm"]
+[ext_resource type="Texture2D" uid="uid://d34sdjp6g11ra" path="res://assets/mobs/nohand/kitten2.png" id="3_83tj6"]
+[ext_resource type="Texture2D" uid="uid://dggg10ybkumxp" path="res://assets/mobs/nohand/kitten3.png" id="4_k7qjp"]
+[ext_resource type="Texture2D" uid="uid://dpu4qbjc8ny7c" path="res://assets/mobs/nohand/kitten4.png" id="5_icq1e"]
+[ext_resource type="Texture2D" uid="uid://b1ycvsrfvapo8" path="res://assets/mobs/nohand/kitten5.png" id="6_kdio0"]
+[ext_resource type="Texture2D" uid="uid://dj5ifmht2xw68" path="res://assets/mobs/nohand/kitten6.png" id="7_0osvg"]
+[ext_resource type="Texture2D" uid="uid://cnf5ycdmj1an3" path="res://assets/mobs/nohand/kitten7.png" id="8_vt1h2"]
+[ext_resource type="Texture2D" uid="uid://buw6fe2p1ssyj" path="res://assets/mobs/cat/hando1.png" id="9_58mte"]
+[ext_resource type="Texture2D" uid="uid://c1nyk10iqhulj" path="res://assets/mobs/cat/hando2.png" id="10_17lrh"]
+[ext_resource type="Texture2D" uid="uid://dciyjsax7exy8" path="res://assets/mobs/cat/hando3.png" id="11_6358y"]
+[ext_resource type="Texture2D" uid="uid://bgb04j5nwhvad" path="res://assets/mobs/cat/hando4.png" id="12_iih3n"]
+[ext_resource type="Script" uid="uid://6cwactyyrg8v" path="res://scripts/items/Hands.cs" id="13_o10pm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k6w6f"]
+radius = 360.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jqg33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o10pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_83tj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k7qjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_icq1e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kdio0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0osvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vt1h2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0osvg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e26jo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_58mte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_17lrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6358y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iih3n")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o10pm"]
+radius = 11.0
+height = 58.0
+
+[node name="CatWarrior" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["cat"]]
+texture_filter = 3
+input_pickable = true
+script = ExtResource("1_k6w6f")
+sprite = NodePath("body")
+MaxHp = 400.0
+Damage = 30.0
+
+[node name="AttackArea" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_k6w6f")
+
+[node name="body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jqg33")
+animation = &"walk"
+frame_progress = 0.35037553
+
+[node name="hands" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -4)
+sprite_frames = SubResource("SpriteFrames_e26jo")
+frame = 3
+frame_progress = 1.0
+script = ExtResource("13_o10pm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_o10pm")
+
+[node name="Timer" type="Timer" parent="."]

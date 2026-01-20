@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4sfhsjtm2fqe"]
+
+[ext_resource type="Script" uid="uid://o4a8ec4hyhot" path="res://scripts/die.cs" id="1_7cs0j"]
+
+[node name="Panel" type="Panel" node_paths=PackedStringArray("dies")]
+offset_left = 458.0
+offset_top = 251.0
+offset_right = 597.0
+offset_bottom = 368.0
+script = ExtResource("1_7cs0j")
+dies = NodePath("Button")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.5
+offset_right = 33.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "you died"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.5
+offset_top = -31.0
+offset_right = 53.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "return menu"

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://btguqs283f8xf"]
+
+[ext_resource type="Script" uid="uid://bxdfnuamvioyc" path="res://scripts/mobs/LadyBug.cs" id="1_olwss"]
+[ext_resource type="Texture2D" uid="uid://bu0p46fgbd1ti" path="res://assets/mobs/ladybug/lb_walk1.png" id="2_c2sgy"]
+[ext_resource type="Texture2D" uid="uid://t2rgd1dm5jd0" path="res://assets/mobs/ladybug/lb_walk2.png" id="3_obebp"]
+[ext_resource type="Texture2D" uid="uid://5u6xfm853dt1" path="res://assets/mobs/ladybug/lb_walk3.png" id="4_7lalg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlto4"]
+size = Vector2(50, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gutht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c2sgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_obebp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7lalg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ladybug" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite", "checkTimer") groups=["enemy"]]
+script = ExtResource("1_olwss")
+AttackInterval = 3.0
+AttackRange = 32.0
+AnimatedSprite = NodePath("AnimatedSprite2D")
+checkTimer = NodePath("Timer")
+MaxHp = 250.0
+MaxSpeed = 250.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 1.5)
+shape = SubResource("RectangleShape2D_vlto4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_gutht")
+
+[node name="Timer" type="Timer" parent="."]

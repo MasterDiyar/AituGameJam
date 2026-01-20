@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfxdbq1iab8bc"]
+
+[ext_resource type="Texture2D" uid="uid://b8p5vgylwm582" path="res://assets/items/kosa.png" id="1_udjer"]
+[ext_resource type="Script" uid="uid://wk2ell6bhpjq" path="res://scripts/items/Item.cs" id="2_dpwg3"]
+[ext_resource type="Script" uid="uid://x8r2squ1gag0" path="res://scripts/actions/KosaAction.cs" id="3_dpwg3"]
+
+[node name="Kosa" type="Sprite2D"]
+texture_filter = 3
+texture = ExtResource("1_udjer")
+script = ExtResource("2_dpwg3")
+Type = "kosa"
+itemID = 89
+
+[node name="KosaAction" type="Node2D" parent="." node_paths=PackedStringArray("timer")]
+script = ExtResource("3_dpwg3")
+timer = NodePath("../Timer")
+
+[node name="Timer" type="Timer" parent="."]

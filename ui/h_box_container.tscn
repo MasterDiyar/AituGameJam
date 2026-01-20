@@ -1,0 +1,64 @@
+[gd_scene load_steps=14 format=3 uid="uid://8bg0y5f03kop"]
+
+[ext_resource type="PackedScene" uid="uid://b6ycj3fnxfoak" path="res://Semena/cactus2.tscn" id="1_c13gq"]
+[ext_resource type="Script" uid="uid://brghyqs6slbkl" path="res://ui/HBoxContainers.cs" id="1_i7ysv"]
+[ext_resource type="PackedScene" uid="uid://by8y5ckb81ea0" path="res://Semena/cactus4.tscn" id="2_i7ysv"]
+[ext_resource type="PackedScene" uid="uid://jn62uvctt40c" path="res://Semena/chamomile.tscn" id="3_iu7jp"]
+[ext_resource type="PackedScene" uid="uid://cr4pumvuhflga" path="res://Semena/cotton2.tscn" id="4_i3d0i"]
+[ext_resource type="PackedScene" uid="uid://c6cafesym0qyy" path="res://Semena/cotton4.tscn" id="5_m3t1j"]
+[ext_resource type="PackedScene" uid="uid://dbca1rcjbavdx" path="res://Semena/mushroom2.tscn" id="6_0q88r"]
+[ext_resource type="PackedScene" uid="uid://cbop1qbvvqttd" path="res://Semena/mussroms4.tscn" id="7_cmy1x"]
+[ext_resource type="PackedScene" uid="uid://c358af36syp2t" path="res://Semena/rice 2.tscn" id="8_i8jyk"]
+[ext_resource type="PackedScene" uid="uid://co8vgnijef4sy" path="res://Semena/Rice.tscn" id="9_doetu"]
+[ext_resource type="PackedScene" uid="uid://isdpa1frkefm" path="res://Semena/romashka2.tscn" id="10_xvnh8"]
+[ext_resource type="PackedScene" uid="uid://b1pnte3qxew0u" path="res://Semena/Wheat2.tscn" id="11_wxa12"]
+[ext_resource type="PackedScene" uid="uid://dp3w5dwvguv66" path="res://Semena/wheat4.tscn" id="12_kuoq1"]
+
+[node name="HBoxContainer" type="HBoxContainer" groups=["shop_ui"]]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 166.0
+grow_horizontal = 2
+script = ExtResource("1_i7ysv")
+
+[node name="SeedTile" parent="." instance=ExtResource("1_c13gq")]
+layout_mode = 2
+
+[node name="SeedTile2" parent="." instance=ExtResource("2_i7ysv")]
+layout_mode = 2
+
+[node name="SeedTile10" parent="." instance=ExtResource("10_xvnh8")]
+layout_mode = 2
+
+[node name="SeedTile3" parent="." instance=ExtResource("3_iu7jp")]
+layout_mode = 2
+
+[node name="SeedTile4" parent="." instance=ExtResource("4_i3d0i")]
+layout_mode = 2
+
+[node name="SeedTile5" parent="." instance=ExtResource("5_m3t1j")]
+layout_mode = 2
+
+[node name="SeedTile6" parent="." instance=ExtResource("6_0q88r")]
+layout_mode = 2
+
+[node name="SeedTile7" parent="." instance=ExtResource("7_cmy1x")]
+layout_mode = 2
+
+[node name="SeedTile8" parent="." instance=ExtResource("8_i8jyk")]
+layout_mode = 2
+
+[node name="SeedTile9" parent="." instance=ExtResource("9_doetu")]
+layout_mode = 2
+
+[node name="SeedTile11" parent="." instance=ExtResource("11_wxa12")]
+layout_mode = 2
+
+[node name="SeedTile12" parent="." instance=ExtResource("12_kuoq1")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "x"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

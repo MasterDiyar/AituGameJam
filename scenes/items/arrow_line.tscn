@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://qgrifawogey7"]
+
+[ext_resource type="Script" uid="uid://dmi7imcl87xco" path="res://scripts/weaponary/bullets/Bullet.cs" id="1_8dtes"]
+[ext_resource type="Texture2D" uid="uid://y73v7u1x2oha" path="res://assets/items/arrow.png" id="2_5oj4q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oj4q"]
+
+[sub_resource type="Curve" id="Curve_8dtes"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.99456525, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="arrowLine" type="Node2D"]
+
+[node name="Arrow" type="Area2D" parent="."]
+script = ExtResource("1_8dtes")
+Damage = 10.0
+Speed = 400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow"]
+shape = SubResource("RectangleShape2D_5oj4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow"]
+texture_filter = 3
+texture = ExtResource("2_5oj4q")
+flip_h = true
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 5.0
+width_curve = SubResource("Curve_8dtes")
+default_color = Color(0.9882353, 0.8666667, 0.95686275, 1)

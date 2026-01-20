@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://h5m6obepeqfl"]
+
+[ext_resource type="Script" uid="uid://bxkvweu6pj5j3" path="res://scripts/weaponary/bullets/Kosilka.cs" id="1_1qcsn"]
+[ext_resource type="Texture2D" uid="uid://do02tfiyckmx8" path="res://assets/items/cosaattack1.png" id="1_rllk0"]
+[ext_resource type="Texture2D" uid="uid://c6xbs3edgntum" path="res://assets/items/cosaattack2.png" id="2_1qcsn"]
+[ext_resource type="Texture2D" uid="uid://bwqrio22nra4y" path="res://assets/items/cosaattack3.png" id="3_n3wqd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwd0n"]
+radius = 39.20459
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcy4s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rllk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1qcsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n3wqd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="kosilka" type="Area2D"]
+script = ExtResource("1_1qcsn")
+Damage = 30.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rwd0n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kcy4s")
+frame = 2
+frame_progress = 1.0
